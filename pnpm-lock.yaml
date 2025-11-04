@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@react-native-picker/picker':
+        specifier: ^2.11.4
+        version: 2.11.4(react-native@0.81.5(@babel/core@7.28.5)(react@19.1.0))(react@19.1.0)
       expo:
         specifier: ~54.0.22
         version: 54.0.22(@babel/core@7.28.5)(react-native@0.81.5(@babel/core@7.28.5)(react@19.1.0))(react@19.1.0)
@@ -707,6 +710,12 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@react-native-picker/picker@2.11.4':
+    resolution: {integrity: sha512-Kf8h1AMnBo54b1fdiVylP2P/iFcZqzpMYcglC28EEFB1DEnOjsNr6Ucqc+3R9e91vHxEDnhZFbYDmAe79P2gjA==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
 
   '@react-native/assets-registry@0.81.5':
     resolution: {integrity: sha512-705B6x/5Kxm1RKRvSv0ADYWm5JOnoiQ1ufW7h8uu2E6G9Of/eE6hP/Ivw3U5jI16ERqZxiKQwk34VJbB0niX9w==}
@@ -3588,6 +3597,11 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@react-native-picker/picker@2.11.4(react-native@0.81.5(@babel/core@7.28.5)(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
+      react-native: 0.81.5(@babel/core@7.28.5)(react@19.1.0)
 
   '@react-native/assets-registry@0.81.5': {}
 
