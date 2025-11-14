@@ -50,22 +50,30 @@ export default function App() {
 		false,
 	]);
 	return (
-		<ScrollView contentContainerStyle={styles.container}>
-			<Text style={styles.title}>Geography Quiz</Text>
-			{questions.map((question) => (
-				<QuizQn
-					key={question.id}
-					id={question.id}
-					image={question.image}
-					question={question.question}
-					options={question.options}
-					correctAnswer={question.correctAnswer}
-					setQuestionsResults={setQuestionsResults}
-				/>
-			))}
-			<Button title="Submit" onPress={handleSubmit} />
-			<StatusBar style="auto" />
-		</ScrollView>
+		<View style={styles.appContainer}>
+			<ScrollView contentContainerStyle={styles.container}>
+				<View style={styles.headerContainer}>
+					<Text style={styles.title}>Geography Quiz</Text>
+				</View>
+				<View style={styles.questionsContainer}>
+					{questions.map((question) => (
+						<QuizQn
+							key={question.id}
+							id={question.id}
+							image={question.image}
+							question={question.question}
+							options={question.options}
+							correctAnswer={question.correctAnswer}
+							setQuestionsResults={setQuestionsResults}
+						/>
+					))}
+				</View>
+				<View style={styles.buttonContainer}>
+					<Button title="Submit" onPress={handleSubmit} />
+				</View>
+				<StatusBar style="auto" />
+			</ScrollView>
+		</View>
 	);
 }
 
@@ -97,9 +105,15 @@ function QuizQn({
 	}, []);
 	return (
 		<View style={styles.quizQn}>
-			<Text style={styles.questionNumber}>Question {id}</Text>
-			<Image source={image} style={styles.image} />
-			<Text style={styles.questionText}>{question}</Text>
+			<View style={styles.questionHeader}>
+				<Text style={styles.questionNumber}>Question {id}</Text>
+			</View>
+			<View style={styles.imageContainer}>
+				<Image source={image} style={styles.image} />
+			</View>
+			<View style={styles.questionTextContainer}>
+				<Text style={styles.questionText}>{question}</Text>
+			</View>
 			<View style={styles.pickerContainer}>
 				<Picker
 					mode="dropdown"
@@ -116,20 +130,37 @@ function QuizQn({
 }
 
 const styles = StyleSheet.create({
+	appContainer: {
+		flex: 1,
+		backgroundColor: "#f5f5f5",
+	},
 	container: {
 		flexGrow: 1,
-		backgroundColor: "#f5f5f5",
+		flexDirection: "column",
 		padding: 20,
 		paddingTop: 60,
+	},
+	headerContainer: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		marginBottom: 30,
 	},
 	title: {
 		fontSize: 28,
 		fontWeight: "bold",
 		color: "#333",
 		textAlign: "center",
-		marginBottom: 30,
+	},
+	questionsContainer: {
+		flexDirection: "column",
+		flex: 1,
+		justifyContent: "flex-start",
+		alignItems: "stretch",
 	},
 	quizQn: {
+		flexDirection: "column",
+		flex: 0,
 		marginBottom: 20,
 		backgroundColor: "#fff",
 		borderRadius: 12,
@@ -140,42 +171,76 @@ const styles = StyleSheet.create({
 		shadowRadius: 4,
 		elevation: 3,
 		alignItems: "center",
+		justifyContent: "flex-start",
+	},
+	questionHeader: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		width: "100%",
+		marginBottom: 15,
 	},
 	questionNumber: {
 		fontSize: 16,
 		fontWeight: "600",
 		color: "#666",
-		marginBottom: 15,
 		textTransform: "uppercase",
 		letterSpacing: 1,
+		textAlign: "center",
+	},
+	imageContainer: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		width: "100%",
+		marginBottom: 20,
 	},
 	image: {
 		width: 150,
 		height: 150,
+		maxWidth: 200,
+		maxHeight: 200,
 		resizeMode: "cover",
 		borderRadius: 8,
-		marginBottom: 20,
 		borderWidth: 2,
 		borderColor: "#e0e0e0",
 	},
+	questionTextContainer: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		width: "100%",
+		marginBottom: 20,
+	},
 	questionText: {
+		flex: 1,
 		fontSize: 18,
 		fontWeight: "500",
 		color: "#333",
 		textAlign: "center",
-		marginBottom: 20,
 		lineHeight: 24,
 	},
 	pickerContainer: {
+		flexDirection: "row",
 		width: "100%",
 		borderWidth: 1,
 		borderColor: "#ddd",
 		borderRadius: 8,
 		overflow: "hidden",
 		backgroundColor: "#fafafa",
+		justifyContent: "center",
+		alignItems: "center",
 	},
 	picker: {
+		flex: 1,
 		width: "100%",
 		height: 50,
+	},
+	buttonContainer: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		marginTop: 20,
+		marginBottom: 20,
 	},
 });
